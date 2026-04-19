@@ -126,7 +126,7 @@ export async function POST(request: Request) {
 
       const query = segment.filter || {};
       const customers = await Customer.find(query).lean();
-      const userId = session?.user?.id?.toString() || 'system';
+      const userId = (session?.user as any)?.id?.toString() || session?.user?.email || 'system';
 
       const campaign = await Campaign.create({
         userId,
