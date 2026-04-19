@@ -182,7 +182,7 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
   const session = await getServerSession(authOptions);
-  const userId = session?.user?.id || 'system';
+  const userId = (session?.user as any)?.id || session?.user?.email || 'system';
 
   try {
     await connectDB();
