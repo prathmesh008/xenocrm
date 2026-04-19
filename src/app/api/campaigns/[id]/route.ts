@@ -7,10 +7,10 @@ import { logger } from "@/lib/logger";
 import { summarizeCampaignPerformance } from "@/lib/ai";
 
 export async function GET(
-   request: Request,
-  { params }: { params: { id: string } }
+  request: Request,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  // const session = await getServerSession(authOptions);
+  const { id: campaignId } = await params;
   
   try {
     await connectDB();
