@@ -15,7 +15,7 @@ export async function GET() {
 
   // Fetch last 7 campaigns (reversed to chronological for chart)
   const campaigns = await Campaign.find({
-    $or: [{ userId: session.user.id }, { userId: 'system' }],
+    $or: [{ userId: (session.user as any).id || session.user.email }, { userId: 'system' }],
   })
     .sort({ createdAt: -1 })
     .limit(7)
