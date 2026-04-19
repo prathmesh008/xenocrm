@@ -266,9 +266,9 @@ export default function DashboardCharts() {
                     ))}
                   </Pie>
                   <Tooltip
-                    formatter={(value: number, name: string) => [
-                      value.toLocaleString(),
-                      name,
+                    formatter={(value) => [
+                        Number(value).toLocaleString(),
+                        '',
                     ]}
                   />
                 </PieChart>
