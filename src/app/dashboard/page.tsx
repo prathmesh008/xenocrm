@@ -37,7 +37,7 @@ export default async function Dashboard() {
   }
 
   const { customerCount, campaignCount } =
-    await getDashboardMetrics(session.user.id);
+    await getDashboardMetrics((session.user as any).id || session.user.email || 'system');
 
   return (
     <div className="py-8 space-y-8">
